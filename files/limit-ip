@@ -1,0 +1,141 @@
+#!/bin/bash
+
+function send_log(){
+CHATID=$(cat /etc/lunatic/bot/notif/id)
+KEY=$(cat /etc/lunatic/bot/notif/key)
+TIME="10"
+URL="https://api.telegram.org/bot$KEY/sendMessage"
+TEXT="
+<code>────────────────────</code>
+<b>⚠️ NOTIFICATIONS MULTI LOGIN ⚠️</b>
+<code>────────────────────</code>
+<code>Username   : </code><code>$user</code>
+<code>Limit Ip   : </code><code>$data</code>
+<code>────────────────────</code>
+"
+curl -s --max-time $TIME -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
+}
+function vmip(){
+#LIMITVMESSIP
+echo -n > /var/log/xray/access.log
+sleep 440
+data=( `ls /etc/lunatic/vmess/ip`);
+#Decrypted By YADDY D PHREAKER
+    for user in "${data[@]}"
+    do
+        LIMIT_IP=$(cat /etc/lunatic/vmess/ip/$user)
+        AKSES_LOG=$(cat /var/log/xray/access.log | grep "$user" | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq);
+        CHECKING_LOG=$(echo -e "$AKSES_LOG" | wc -l);
+        if [[ $CHECKING_LOG -gt $LIMIT_IP ]]; then
+            exp=$(grep -w "^### $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
+                  sed -i "/^### $user $exp/,/^},{/d" /etc/xray/config.json
+                  sed -i "/^### $user $exp/d" /etc/lunatic/vmess/.vmess.db
+                  systemctl restart xray >> /dev/null 2>&1
+                  jum2=$(cat /tmp/ipvmess.txt | wc -l)
+                  rm -rf /etc/lunatic/vmess/ip/$user
+                  rm -rf /etc/lunatic/vmess/usage/$user
+                  rm -rf /etc/lunatic/vmess/detail/$user
+                  rm -rf /var/www/html/vmess-$user.txt
+                                    
+                  send_log
+                else
+            echo ""
+        fi
+        sleep 0.1
+    done
+}
+function vlip(){
+#LIMITVLESSIP
+echo -n > /var/log/xray/access.log
+sleep 440
+data=( `ls /etc/lunatic/vless/ip`);
+    for user in "${data[@]}"
+    do
+        LIMIT_IP=$(cat /etc/lunatic/vless/ip/$user)
+        AKSES_LOG=$(cat /var/log/xray/access.log | grep "$user" | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq);
+        CHECKING_LOG=$(echo -e "$AKSES_LOG" | wc -l);
+        if [[ $CHECKING_LOG -gt $LIMIT_IP ]]; then
+            exp=$(grep -w "^#& $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
+                  sed -i "/^#& $user $exp/,/^},{/d" /etc/xray/config.json
+                  sed -i "/^### $user $exp/d" /etc/lunatic/vless/.vless.db
+                  systemctl restart xray >> /dev/null 2>&1
+                  jum2=$(cat /tmp/ipvless.txt | wc -l)
+                  rm -rf /etc/lunatic/vless/ip/$user
+                  rm -rf /etc/lunatic/vless/usage/$user
+                  rm -rf /etc/lunatic/vless/detail/$user
+                  rm -rf /var/www/html/vless-$user.txt                                  
+                  send_log
+                else
+            echo ""
+        fi
+        sleep 0.1
+    done
+}
+function trip(){
+#LIMITIPTROJAN
+echo -n > /var/log/xray/access.log
+sleep 440
+data=( `ls /etc/lunatic/trojan/ip`);
+    for user in "${data[@]}"
+    do
+        LIMIT_IP=$(cat /etc/lunatic/trojan/ip/$user)
+        AKSES_LOG=$(cat /var/log/xray/access.log | grep "$user" | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq);
+        CHECKING_LOG=$(echo -e "$AKSES_LOG" | wc -l);
+        if [[ $CHECKING_LOG -gt $LIMIT_IP ]]; then
+            exp=$(grep -w "^#! $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
+                  sed -i "/^#! $user $exp/,/^},{/d" /etc/xray/config.json
+                  sed -i "/^### $user $exp/d" /etc/lunatic/trojan/.trojan.db
+                  systemctl restart xray >> /dev/null 2>&1
+                  jum2=$(cat /tmp/iptrojan.txt | wc -l)
+                  rm -rf /etc/lunatic/trojan/ip/$user
+                  rm -rf /etc/lunatic/trojan/usage/$user
+                  rm -rf /etc/lunatic/trojan/detail/$user
+                  rm -rf /var/www/html/trojan-$user.txt                          
+                  send_log
+                else
+            echo ""
+        fi
+        sleep 0.1
+    done
+}
+function ssip(){
+#LIMITIPSHADOWSOCKS
+echo -n > /var/log/xray/access.log
+sleep 440
+data=( `ls /etc/lunatic/shadowsocks/ip`);
+    for user in "${data[@]}"
+    do
+        LIMIT_IP=$(cat /etc/lunatic/shadowsocks/ip/$user)
+        AKSES_LOG=$(cat /var/log/xray/access.log | grep "$user" | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq);
+        CHECKING_LOG=$(echo -e "$AKSES_LOG" | wc -l);
+        if [[ $CHECKING_LOG -gt $LIMIT_IP ]]; then
+            exp=$(grep -w "^#!# $user" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
+                  sed -i "/^#!# $user $exp/,/^},{/d" /etc/xray/config.json
+                  sed -i "/^### $user $exp/d" /etc/lunatic/shadowsocks/.shadowsocks.db
+                  systemctl restart xray >> /dev/null 2>&1
+                  jum2=$(cat /tmp/ipshadowsocks.txt | wc -l)
+                  rm -rf /etc/lunatic/shadowsocks/ip/$user
+                  rm -rf /etc/lunatic/shadowsocks/usage/$user
+                  rm -rf /etc/lunatic/shadowsocks/detail/$user
+                  rm -rf /var/www/html/shadowsocks-$user.txt                          
+                  send_log
+                else
+            echo ""
+        fi
+        sleep 0.1
+    done
+}
+
+if [[ ${1} == "vmip" ]]; then
+vmip
+elif [[ ${1} == "vlip" ]]; then
+vlip
+elif [[ ${1} == "trip" ]]; then
+trip
+elif [[ ${1} == "ssip" ]]; then
+ssip
+fi
+
+
+
+

@@ -1,0 +1,11 @@
+[Unit]
+Description=Xray Multi-login Lock Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /usr/local/sbin/killVL
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
