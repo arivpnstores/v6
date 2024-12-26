@@ -5,7 +5,7 @@
 <pre><code>apt update && apt upgrade -y && update-grub && sleep 2 && reboot</pre></code>
 
 ### INSTALL SCRIPT 
-<pre><code>apt dist-upgrade -y && update-grub && wget -q https://raw.githubusercontent.com/kanggacorvpn/vpnscripts/main/ins.sh && chmod +x ins.sh && ./ins.sh
+<pre><code>apt dist-upgrade -y && update-grub && wget -q https://raw.githubusercontent.com/arivpnstores/v6/main/ins.sh && chmod +x ins.sh && ./ins.sh
 </code></pre>
 
 ### TESTED ON OS 
