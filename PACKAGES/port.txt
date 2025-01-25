@@ -1,0 +1,20 @@
+protocol ports:
+========================================
+ssh ws     : 80
+ssh ssL    : 443
+dropbear   : 109, 143
+openssh    : 22, 2222
+openvpn    : 443, 2200, 1194
+udp-custom : 54-65535, 1-66535, 1-36311
+slowdns    : 53
+xray WS    : 80
+xray TLS   : 443
+squid      : 3128
+udpwg      : 7100 - 7300
+========================================
+
+#   Ari Tunneling
+# Bandung Barat Developed
+# DeanLunatic
+# wa/tl : 085955333616
+# scripts all os deb 10,11,12 ubu 20,22,24

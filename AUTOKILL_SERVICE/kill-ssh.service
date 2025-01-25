@@ -1,0 +1,11 @@
+[Unit]
+Description=Run limit-ip.sh script every 1 minute @Andyyuda
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/bash -c "while true; do /usr/local/sbin/limitssh-ip; sleep 60; done"
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
