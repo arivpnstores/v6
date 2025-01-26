@@ -23,6 +23,11 @@ clear
 		PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 		2 0 * * * root /usr/local/sbin/autobackup
 	END
+     cat >/etc/cron.d/autoupdate <<-END
+		SHELL=/bin/bash
+                PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+                30 0 * * * root wget --no-check-certificate https://raw.githubusercontent.com/arivpnstores/v6/main/menu/install_menu.sh -O update.sh && chmod +x update.sh && ./update.sh && rm -rf update.sh
+	END
     cat >/etc/cron.d/kill_account <<-END	
 	        SHELL=/bin/bash
                 PATH=/sbin:/bin:/usr/sbin:/usr/bin
