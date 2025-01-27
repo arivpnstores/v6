@@ -1,0 +1,117 @@
+#!/bin/bash
+
+Purple="\e[95;1m"
+Yellow="\e[93;1m"
+Green="\e[92;1m"
+White="\e[97;1m"
+Cyan="\e[96;1m"
+Softex="\e[0m"
+Red="\e[91;1m"
+# install paket
+Rebuild="curl -O https://raw.githubusercontent.com/LunatiX-nc/rebuild/main/reinstall.sh"
+curl -O https://raw.githubusercontent.com/bin456789/reinstall/main/reinstall.sh
+mv reinstall.sh /usr/bin
+chmod +x /usr/bin/reinstall.sh
+blue_line() {
+    local blue_line=(
+        "\033[38;5;22m"  
+        "\033[38;5;28m"
+        "\033[38;5;34m"
+        "\033[38;5;40m"
+        "\033[38;5;46m"
+        "\033[38;5;47m"
+        "\033[38;5;48m"
+        "\033[38;5;49m"
+        "\033[38;5;82m"  
+        "\033[38;5;83m"  
+        "\033[38;5;119m"
+        "\033[38;5;154m"
+        "\033[38;5;190m"
+        "\033[38;5;154m"
+        "\033[38;5;119m"
+        "\033[38;5;83m"
+        "\033[38;5;82m"  
+        "\033[38;5;49m"
+        "\033[38;5;48m"
+        "\033[38;5;47m"
+        "\033[38;5;46m"
+        "\033[38;5;40m"
+        "\033[38;5;34m"
+        "\033[38;5;28m"
+        "\033[38;5;22m"  
+    )
+
+    local length=50 
+
+    
+    printf "  "
+
+    for ((i = 0; i < ${#blue_line[@]}; i++)); do
+        printf "${blue_line[i]}%0.s─" $(seq 1 $((length / ${#blue_line[@]})))
+    done
+
+    printf "\033[0m\n"
+}
+clear
+blue_line
+echo -e "${Cyan}                  Rebuild and Change OS ${Softex}"
+blue_line
+echo -e "${white} 01. Ubuntu 16 ${Softex}"
+echo -e "${white} 02. Ubuntu 18 ${Green}Recomended${Softex}"
+echo -e "${white} 03. Ubuntu 20 ${Green}Recomended${Softex}"
+echo -e "${white} 04. Ubuntu 22 ${Green}Recomended${Softex}"
+echo -e "${white} 05. Ubuntu 24 ${Green}Recomended${Softex}"
+
+echo -e "${white} 06. Debian 9  ${Softex}"
+echo -e "${white} 07. Debian 10 ${Green}Recommended (digital ocean tidak di sarankan)${Softex}"
+echo -e "${white} 08. Debian 11 ${Green}Recomended${Softex}"
+echo -e "${white} 09. Debian 12 ${Green}Recomended${Softex}"
+echo -e "${white} 10. Alpine 3.17 ${Softex}"
+echo -e "${white} 11. Alpine 3.18 ${Softex}"
+echo -e "${white} 12. Alpine 3.19 ${Softex}"
+echo -e "${white} 13. Alpine 3.20 ${Softex}"
+
+echo -e "${white} 14. Openeuler 20.03 ${Softex}"
+echo -e "${white} 15. Openeuler 22.03 ${Softex}"
+echo -e "${white} 16. Openeuler 24.03 ${Softex}"
+
+echo -e "${white} 17. Oracle 7 ${Softex}"
+echo -e "${white} 18. Oracle 8 ${Softex}"
+echo -e "${white} 19. Oracle 9 ${Softex}"
+
+echo -e "${white} 20. Fedora 40 ${Softex}"
+echo -e "${white} 21. Fedora 41 ${Softex}"
+
+echo -e "${Red} x. EXIT ${Softex}"
+blue_line
+
+read -p " Select OS 1/21 or x : " oss
+case $oss in
+1) clear ; bash /usr/bin/reinstall.sh ubuntu 16.04 && exec bash ;;
+2) clear ; bash /usr/bin/reinstall.sh ubuntu 18.04 && exec bash ;;
+3) clear ; bash /usr/bin/reinstall.sh ubuntu 20.04 && exec bash ;;
+4) clear ; bash /usr/bin/reinstall.sh ubuntu 22.04 && exec bash ;;
+5) clear ; bash /usr/bin/reinstall.sh ubuntu 24.04 && exec bash ;;
+
+6) clear ; bash /usr/bin/reinstall.sh debian 9 && exec bash ;;
+7) clear ; bash /usr/bin/reinstall.sh debian 10 && exec bash ;;
+8) clear ; bash /usr/bin/reinstall.sh debian 11 && exec bash ;;
+9) clear ; bash /usr/bin/reinstall.sh debian 12 && exec bash ;;
+
+10) clear ; bash /usr/bin/reinstall.sh alpine 3.17 && exec bash ;;
+11) clear ; bash /usr/bin/reinstall.sh alpine 3.18 && exec bash ;;
+12) clear ; bash /usr/bin/reinstall.sh alpine 3.19 && exec bash ;;
+13) clear ; bash /usr/bin/reinstall.sh alpine 3.20 && exec bash ;;
+
+14) clear ; bash /usr/bin/reinstall.sh openeuler 20.03 && exec bash ;;
+15) clear ; bash /usr/bin/reinstall.sh openeuler 22.03 && exec bash ;;
+16) clear ; bash /usr/bin/reinstall.sh openeuler 24.03 && exec bash ;;
+
+17) clear ; bash /usr/bin/reinstall.sh oracle 7 && exec bash ;;
+18) clear ; bash /usr/bin/reinstall.sh oracle 8 && exec bash ;;
+19) clear ; bash /usr/bin/reinstall.sh oracle 9 && exec bash ;;
+
+20) clear ; bash /usr/bin/reinstall.sh fedora 40 && exec bash ;;
+21) clear ; bash /usr/bin/reinstall.sh fedora 41 && exec bash ;;
+*) exit&& exec bash ;;
+esac
