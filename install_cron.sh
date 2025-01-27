@@ -6,7 +6,7 @@ clear
     cat >/etc/cron.d/xp_all <<-END
 		SHELL=/bin/sh
 		PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-		2 0 * * * root /usr/bin/xp
+		0 0 * * * root /usr/bin/xp
 	END
     cat >/etc/cron.d/logclean <<-END
 		SHELL=/bin/sh
@@ -16,7 +16,7 @@ clear
 	    cat >/etc/cron.d/daily_reboot <<-END
 		SHELL=/bin/sh
 		PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-		0 5 * * * /sbin/reboot
+		0 3 * * * /sbin/reboot
 	END
     cat >/etc/cron.d/autobackup <<-END
 		SHELL=/bin/sh
